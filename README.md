@@ -52,3 +52,18 @@ jdbc:postgresql://localhost:5432/@DBNAME@
 ```
 * Follow the wizard, enter the db 'openmrs' and db user 'openmrs' with password 'openmrs' where asked
 
+##Access
+###PostgreSQL DB
+```
+vagrant ssh
+psql -U openmrs -h localhost -d openmrs
+```
+
+Password: openmrs
+
+###Tomcat Manager
+http://localhost:8080/manager/
+
+User: admin
+Password: admin
+
