@@ -25,7 +25,7 @@ necessary puppet modules via librarian-puppet and run the manifest/site.pp
 which
 * installs openjdk7
 * installs maven
-* installs PostgreSQL server (currently 9.3.7, depends on default in
+* installs PostgreSQL server (currently 9.3.8, depends on default in
   puppetlabs-postgresql module)
 * creates PostgreSQL user 'openmrs' with password 'openmrs' and an empty
   database 'openmrs'
