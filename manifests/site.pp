@@ -26,6 +26,13 @@ postgresql::server::pg_hba_rule { 'allow openmrs role access to all databases':
     auth_method => 'md5',
 }
 
+postgresql::server::extension { 'fuzzystrmatch':
+    database       => 'openmrs',
+    ensure         => 'present',
+    package_name   => 'postgresql-contrib',
+    package_ensure => 'present',
+}
+
 class { 'tomcat6':
     tomcat_users => [
                         {   name     => 'admin',
