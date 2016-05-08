@@ -1,9 +1,31 @@
 ---
-tomcat6::java_opts:
-    - '-Djava.awt.headless=true'
-    - '-Xms256m'
-    - '-Xmx1024m'
-    - '-XX:MaxPermSize=256m'
-    - '-XX:+UseConcMarkSweepGC'
-staging::file::timeout: 800
-staging::deploy::timeout: 800
+packages_present:
+  - 'unzip'
+  - 'curl'
+  - 'python-software-properties'
+  - 'augeas-tools'
+  - 'maven'
+
+locales::locales:
+  - 'en_US.UTF-8 UTF-8'
+locales::default_locale: 'en_US.UTF-8'
+
+postgresql::globals::encoding: 'UTF-8'
+postgresql::globals::locale: 'en_US.UTF-8'
+postgresql::globals::manage_package_repo: true
+postgresql::globals::version: '9.3'
+
+tomcat::manage_user: true
+tomcat::user: &tomcat_user 'tomcat7'
+tomcat::install_from_source: false
+tomcat_catalina_base: &tomcat_catalina_base '/var/lib/tomcat7/'
+tomcat_java_opts:
+  - '-Djava.awt.headless=true'
+  - '-Xmx2048m'
+  - '-XX:+UseConcMarkSweepGC'
+openmrs::tomcat_user: *tomcat_user
+openmrs::tomcat_catalina_base: *tomcat_catalina_base
+openmrs::openmrs_application_data_directory: '/var/lib/OpenMRS/'
+
+staging::file::timeout: 0
+staging::deploy::timeout: 0
